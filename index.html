@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday Khushi 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;600&display=swap');
+
+        :root {
+            --pink: #d97aa6;
+            --soft: #fdecef;
+            --dark: #3d3d3d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--soft);
+            color: var(--dark);
+            overflow: hidden;
+        }
+
+        /* ================= MUSIC ================= */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--pink);
+            background: #fff;
+            color: var(--pink);
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .music-btn.playing {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            50% {
+                box-shadow: 0 0 0 15px rgba(217, 122, 166, 0)
+            }
+        }
+
+        /* ================= INTRO ================= */
+        .intro {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top left, rgba(217, 122, 166, .25), transparent 60%),
+                radial-gradient(circle at bottom right, rgba(255, 200, 220, .35), transparent 65%);
+            z-index: 0;
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 1.5s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .intro h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+        }
+
+        .name {
+            display: block;
+            font-size: 5.5rem;
+            font-weight: 700;
+            color: var(--pink);
+            animation: glow 2.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(217, 122, 166, .3)
+            }
+
+            to {
+                text-shadow: 0 0 40px rgba(217, 122, 166, .8)
+            }
+        }
+
+        .intro p {
+            margin: 25px 0;
+            font-size: 1.1rem;
+        }
+
+        .intro button {
+            padding: 14px 45px;
+            border: 2px solid var(--pink);
+            background: transparent;
+            color: var(--pink);
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .intro button:hover {
+            background: var(--pink);
+            color: #fff;
+        }
+
+        /* ================= FLOATING HEARTS ================= */
+        .heart {
+            position: absolute;
+            color: var(--pink);
+            font-size: 18px;
+            animation: floatUp linear infinite;
+            opacity: .7;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh) scale(.5);
+                opacity: 0
+            }
+
+            20% {
+                opacity: .8
+            }
+
+            to {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0
+            }
+        }
+
+        /* ================= OVERLAY ================= */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: var(--pink);
+            z-index: 200;
+            animation: zoomIn .8s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(.8);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        /* ================= CONTENT ================= */
+        .hidden {
+            display: none
+        }
+
+        .content {
+            min-height: 100vh;
+            overflow-y: auto;
+            animation: fadeIn 1.2s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        /* HERO */
+        .hero {
+            padding: 90px 40px 60px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+        }
+
+        /* MAIN PHOTO */
+        .main-photo {
+            max-width: 900px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, .15);
+            animation: fadeUp 1.2s ease;
+        }
+
+        .main-photo img {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+            background: var(--soft);
+        }
+
+        /* GALLERY */
+        .gallery {
+            max-width: 1300px;
+            margin: 80px auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .12);
+            transform: translateY(40px);
+            opacity: 0;
+            animation: cardIn .9s ease forwards;
+        }
+
+        .card:nth-child(odd) {
+            animation-delay: .2s
+        }
+
+        .card:nth-child(even) {
+            animation-delay: .4s
+        }
+
+        @keyframes cardIn {
+            to {
+                transform: translateY(0);
+                opacity: 1
+            }
+        }
+
+        .card img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            background: var(--soft);
+        }
+
+        .card p {
+            padding: 18px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* QUOTE */
+        .quote {
+            max-width: 800px;
+            margin: 120px auto;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+        }
+
+        /* MESSAGE */
+        .message {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 70px 50px;
+            background: #fff;
+            border-left: 4px solid var(--pink);
+            border-right: 4px solid var(--pink);
+            animation: fadeUp 1.2s ease;
+        }
+
+        .message h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            margin-bottom: 25px;
+            color: var(--pink);
+        }
+
+        .message p {
+            line-height: 2
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 70px 40px;
+            text-align: center;
+        }
+
+        .footer strong {
+            color: var(--pink);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♫</button>
+
+    <!-- INTRO -->
+    <section class="intro" id="intro">
+        <div class="intro-content">
+            <h1>Happy Birthday <span class="name">Khushi</span></h1>
+            <p>Celebrating someone who makes life brighter ✨</p>
+            <button onclick="celebrate()">Celebrate</button>
+        </div>
+    </section>
+
+    <div class="overlay hidden" id="overlay">Celebrating You 💖</div>
+
+    <section class="content hidden" id="content">
+
+        <div class="hero">
+            <h2>Beautiful Memories</h2>
+        </div>
+
+        <div class="main-photo">
+            <img src="images/main.jpeg">
+        </div>
+
+        <div class="gallery">
+            <div class="card"><img src="images/1.jpeg">
+                <p>A smile that feels like home</p>
+            </div>
+            <div class="card"><img src="images/2.jpeg">
+                <p>Pure joy, no filter needed</p>
+            </div>
+            <div class="card"><img src="images/3.jpeg">
+                <p>Moments I'll always cherish</p>
+            </div>
+            <div class="card"><img src="images/4.jpeg">
+                <p>Happiness looks good on you</p>
+            </div>
+            <div class="card"><img src="images/5.jpeg">
+                <p>Some smiles stay forever</p>
+            </div>
+            <div class="card"><img src="images/6.jpeg">
+                <p>Golden memories in frames</p>
+            </div>
+            <div class="card"><img src="images/7.jpeg">
+                <p>Comfort in every moment</p>
+            </div>
+            <div class="card"><img src="images/8.jpeg">
+                <p>Laughter I'm grateful for</p>
+            </div>
+        </div>
+
+        <div class="quote">
+            “Some friendships don’t need daily talks — they live quietly in the heart.”
+        </div>
+
+        <div class="message">
+            <h3>Dear Khushi</h3>
+            <p>
+                Some people come into our lives quietly and slowly become a reason to smile every day.<br><br>
+                Happy Birthday to someone who truly matters.<br><br>
+                May this year bring you peace, happiness, and endless smiles.
+            </p>
+        </div>
+
+        <div class="footer">
+            With love, always —<br>
+            <strong>Your friend, Sarfaraz 🤍</strong>
+        </div>
+
+    </section>
+
+    <script>
+        let playing = false;
+        const music = document.getElementById("music");
+        const btn = document.getElementById("musicBtn");
+
+        function toggleMusic() {
+            if (playing) { music.pause(); btn.classList.remove("playing") }
+            else { music.play(); btn.classList.add("playing") }
+            playing = !playing;
+        }
+
+        /* FLOATING HEARTS */
+        for (let i = 0; i < 30; i++) {
+            let h = document.createElement("div");
+            h.className = "heart";
+            h.innerHTML = "💖";
+            h.style.left = Math.random() * 100 + "%";
+            h.style.animationDuration = 6 + Math.random() * 6 + "s";
+            document.body.appendChild(h);
+        }
+
+        function celebrate() {
+            music.play();
+            playing = true;
+            btn.classList.add("playing");
+            document.getElementById("overlay").classList.remove("hidden");
+            setTimeout(() => {
+                document.getElementById("intro").classList.add("hidden");
+                document.getElementById("overlay").classList.add("hidden");
+                document.getElementById("content").classList.remove("hidden");
+                document.body.style.overflow = "auto";
+            }, 1800);
+        }
+    </script>
+
+</body>
+
+</html>
